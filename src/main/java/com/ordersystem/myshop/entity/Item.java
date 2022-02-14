@@ -1,6 +1,8 @@
 package com.ordersystem.myshop.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Item {
 
@@ -11,8 +13,8 @@ public class Item {
     private String itemName;
     private Integer price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORDER_ID")
-    private Order order;
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
+
 
 }

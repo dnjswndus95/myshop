@@ -3,6 +3,8 @@ package com.ordersystem.myshop.entity;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,6 +19,8 @@ public class Member {
     @Embedded
     private Address address;
 
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
 
 }
