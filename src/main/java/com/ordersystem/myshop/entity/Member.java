@@ -14,6 +14,9 @@ public class Member {
 
     private String username;
 
+    @Embedded
+    private Address address;
+
 
 
 }
