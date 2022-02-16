@@ -2,6 +2,7 @@ package com.ordersystem.myshop.service;
 
 import com.ordersystem.myshop.entity.Member;
 import com.ordersystem.myshop.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,15 @@ public class MemberService {
         validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
+    }
+
+
+    public List<Member> findAll(){
+        return memberRepository.findAll();
+    }
+
+    public Optional<Member> findOne(Long memberId){
+        return memberRepository.findById(memberId);
     }
 
     public void delete(Member member){
