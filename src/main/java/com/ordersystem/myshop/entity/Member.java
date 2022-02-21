@@ -28,7 +28,7 @@ public class Member {
 
     public Member(String username, Address address){
         this.username = username;
-        this.address = address;
+        this.address = new Address(address.getCity(), address.getStreet(), address.getZipcode());
     }
 
     public Member(String username) {

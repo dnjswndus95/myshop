@@ -1,6 +1,7 @@
 package com.ordersystem.myshop.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
 

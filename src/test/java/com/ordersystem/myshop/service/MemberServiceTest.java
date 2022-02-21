@@ -30,5 +30,6 @@ public class MemberServiceTest {
         Optional<Member> findMember = memberRepository.findById(joinMemberId);
         
         Assertions.assertThat(findMember.get().getUsername()).isEqualTo(member.getUsername());
+        System.out.println("findMember.get().getUsername() = " + findMember.get().getUsername());
     }
 }
