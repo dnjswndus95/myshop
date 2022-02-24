@@ -4,6 +4,7 @@ import com.ordersystem.myshop.entity.Address;
 import com.ordersystem.myshop.entity.Item;
 import com.ordersystem.myshop.entity.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,8 +27,8 @@ public class InitDB {
     @RequiredArgsConstructor
     static class InitService{
 
-        @PersistenceContext
         private final EntityManager em;
+
         public void dbInit(){
             Member member = createMember("userA", "서울", "강남대로", "1111");
             em.persist(member);
@@ -47,7 +48,7 @@ public class InitDB {
             Item book4 = createBook("SPRING2 BOOK", 25000);
             em.persist(book4);
 
-          /*  OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 5);
+  /*OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 5);
             OrderItem orderItem2 = OrderItem.createOrderItem(book2, 20000, 10);
 
             OrderItem orderItem3 = OrderItem.createOrderItem(book3, 15000, 5);
@@ -63,8 +64,8 @@ public class InitDB {
             delivery1.setAddress(member1.getAddress());
             Order order2 = Order.createOrder(member1, delivery1, orderItem3, orderItem4);
 
-            em.persist(order2);
-*/
+            em.persist(order2);*/
+
 
         }
 

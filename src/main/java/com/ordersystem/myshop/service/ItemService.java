@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class ItemService {
 
     @Autowired
@@ -26,8 +26,16 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Optional<Item> findOne(Long itemId){
-        return itemRepository.findById(itemId);
+    public Item findById(Long itemId){
+        Optional<Item> items = itemRepository.findById(itemId);
+        Item item = items.orElse(null);
+        return item;
+    }
+
+    public void updateItem(Long id, String name, int price, int stockQuantity){
+        Optional<Item> findItem = itemRepository.findById(id);
+        Item item = findItem.orElse(null);
+        item.updateItem(name, price, stockQuantity);
     }
 
     public void delete(Item item){

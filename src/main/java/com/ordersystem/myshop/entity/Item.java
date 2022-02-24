@@ -15,8 +15,8 @@ public class Item {
     @Column(name = "ITEM_ID")
     private Long id;
 
-    private String itemName;
-    private Integer price;
+    private String name;
+    private int price;
     private int stockQuantity;
 
     public void addStockQuantity(int add){
@@ -34,9 +34,21 @@ public class Item {
     protected Item() {
 
     }
+    public Item(Long id, String itemName, int price, int stockQuantity) {
+        this.id = id;
+        this.name = itemName;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 
-    public Item(String itemName, Integer price, int stockQuantity) {
-        this.itemName = itemName;
+    public Item(String itemName, int price, int stockQuantity) {
+        this.name = itemName;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
+
+    public void updateItem(String name, int price, int stockQuantity){
+        this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
     }

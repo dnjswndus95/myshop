@@ -1,4 +1,4 @@
-package com.ordersystem.myshop.entity;
+package com.ordersystem.myshop.entity.form;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class MemberService {
 
     @Autowired
@@ -24,6 +24,7 @@ public class MemberService {
     }
 
 
+    @Transactional(readOnly = true)
     public List<Member> findAll(){
         return memberRepository.findAll();
     }

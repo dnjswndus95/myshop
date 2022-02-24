@@ -27,11 +27,5 @@ public class ItemServiceTest {
         Item item = new Item("JPA", 20000, 10);
         Long itemId = itemService.save(item);
 
-        Optional<Item> findItem = itemRepository.findById(itemId);
-        System.out.println("findItem = " + findItem);
-        //    System.out.println("findItem.get().getItemName() = " + findItem.get());
-        System.out.println("item.getItemName() = " + item.getItemName());
-
-        Assertions.assertThat(findItem.get().getItemName()).isEqualTo(item.getItemName());
     }
 }
