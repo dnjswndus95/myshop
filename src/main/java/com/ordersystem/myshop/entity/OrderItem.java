@@ -24,6 +24,8 @@ public class OrderItem {
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
+    private void setItem(Item item){ this.item = item;}
+
 
     protected OrderItem(){
     }
@@ -32,5 +34,17 @@ public class OrderItem {
         this.order = order;
     }
 
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.orderPrice = orderPrice;
+        orderItem.count = count;
 
+        item.subtractStockQuantity(count);
+        return orderItem;
+    }
+
+    public void cancel(){
+        getItem().addStockQuantity(count);
+    }
 }

@@ -22,4 +22,16 @@ public class Delivery {
     @Embedded
     private Address address;
 
+    public void setOrder(Order order){
+        this.order = order;
+    }
+
+    protected Delivery(){
+    }
+
+    public Delivery(Address address, DeliveryStatus status){
+        this.address = address;
+        this.deliveryStatus = status;
+    }
+
 }
