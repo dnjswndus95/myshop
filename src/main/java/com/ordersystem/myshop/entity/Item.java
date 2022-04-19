@@ -27,7 +27,7 @@ public class Item {
         if(this.stockQuantity >= sub)
             this.stockQuantity -= sub;
         else
-            throw new NotEnoughStockException("수량 부족");
+            throw new NotEnoughStockException("재고가 부족합니다.");
 
     }
 

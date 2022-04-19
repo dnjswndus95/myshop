@@ -75,4 +75,12 @@ public class Order {
             orderItem.cancel();
 
     }
+
+    public int getTotalPrice(){
+        int totalPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            totalPrice += orderItem.getOrderPrice() * orderItem.getCount();
+        }
+        return totalPrice;
+    }
 }

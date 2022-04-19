@@ -39,17 +39,16 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom{
        
     }
 
+
     private BooleanExpression nameLike(String nameCond) {
         if(!StringUtils.hasText(nameCond))
             return null;
-
         return member.username.like(nameCond);
     }
 
     private BooleanExpression statusEq(OrderStatus statusCond) {
         if(statusCond == null)
             return null;
-
         return order.orderStatus.eq(statusCond);
     }
 }
