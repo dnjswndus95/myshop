@@ -15,5 +15,6 @@ public class ItemDto {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
+
     }
 }

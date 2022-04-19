@@ -39,6 +39,7 @@ public class MemberController {
                                 .collect(Collectors.toList());
 
         model.addAttribute("members", collect);
+
         return "members/memberList";
     }
 

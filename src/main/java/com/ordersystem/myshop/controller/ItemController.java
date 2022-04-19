@@ -45,6 +45,7 @@ public class ItemController {
                                 .collect(Collectors.toList());
 
         model.addAttribute("items", collect);
+
         return "items/itemList";
     }
 
