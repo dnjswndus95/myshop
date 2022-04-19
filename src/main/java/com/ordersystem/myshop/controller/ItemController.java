@@ -1,5 +1,6 @@
 package com.ordersystem.myshop.controller;
 
+import com.ordersystem.myshop.entity.DTO.ItemDto;
 import com.ordersystem.myshop.entity.Item;
 import com.ordersystem.myshop.entity.form.ItemForm;
 import com.ordersystem.myshop.repository.ItemRepository;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -38,7 +40,11 @@ public class ItemController {
     @GetMapping("/items")
     public String list(Model model){
         List<Item> items = itemService.findAll();
-        model.addAttribute("items", items);
+        List<ItemDto> collect = items.stream()
+                                .map(i -> new ItemDto(i.getId(), i.getName(), i.getPrice(), i.getStockQuantity()))
+                                .collect(Collectors.toList());
+
+        model.addAttribute("items", collect);
         return "items/itemList";
     }
 

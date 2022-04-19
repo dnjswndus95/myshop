@@ -3,6 +3,7 @@ package com.ordersystem.myshop.controller;
 
 import com.ordersystem.myshop.entity.Address;
 import com.ordersystem.myshop.entity.Member;
+import com.ordersystem.myshop.entity.DTO.MemberDto;
 import com.ordersystem.myshop.entity.form.MemberForm;
 import com.ordersystem.myshop.repository.MemberRepository;
 import com.ordersystem.myshop.service.MemberService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,7 +33,12 @@ public class MemberController {
     @GetMapping("/members")
     public String getMembers(Model model){
         List<Member> members = memberService.findAll();
-        model.addAttribute("members", members);
+
+        List<MemberDto> collect = members.stream()
+                        .map(m -> new MemberDto(m.getId(), m.getUsername(), m.getAddress()))
+                                .collect(Collectors.toList());
+
+        model.addAttribute("members", collect);
         return "members/memberList";
     }
 
